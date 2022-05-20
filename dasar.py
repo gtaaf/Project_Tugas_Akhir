@@ -3,10 +3,18 @@ import tensorflow as tf
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
+from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 
 model = tf.keras.models.load_model('my_model.h5')
+
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = '10032000GTAaf'
+app.config['MYSQL_DB'] = 'db_TA'
+
+mysql=MySQL(app)
 
 
 @app.route('/')
